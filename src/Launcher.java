@@ -7,7 +7,7 @@ public class Launcher {
 
         var scanner = new Scanner(System.in);
 
-        while (true) {
+        for (;;) {
             String entry = scanner.nextLine();
             if (entry.equals("quit")) {
                 break;
