@@ -1,17 +1,23 @@
-public class fibonacci {
-
-    // Fibonacci
+public class Fibonacci {
     public int n;
 
-    public int fibonacci(int n) {
+    public Fibonacci(int n) {
+        this.n = n;
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    public int execute_fibonacci(int n) {
         if (n == 0) {
+            return 0;
+        }
+
+        if (n == 1) {
             return 1;
         }
-        else if (n == 1) {
-            return 1;
-        }
-        else {
-            return fibonacci(n - 1) + fibonacci(n - 2);
-        }
+
+        return execute_fibonacci(n - 1) + execute_fibonacci(n - 2);
     }
 }
