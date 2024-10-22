@@ -16,6 +16,7 @@ public class Launcher {
                 int n = scanner.nextInt();
                 Fibonacci fib = new Fibonacci(n);
                 System.out.println(fib.execute_fibonacci(n));
+                break;
             } else {
                 System.out.println("Unknown command");
             }
