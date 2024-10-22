@@ -5,10 +5,12 @@ public class Launcher {
         var scanner = new Scanner(System.in);
         String entry = scanner.nextLine();
 
-        if (entry.equals("exit")) {
-            System.exit(0);
-        } else {
-            System.out.println("Unknown command");
+        for (;;) {
+            if (entry.equals("exit")) {
+                System.exit(0);
+            } else {
+                System.out.println("Unknown command");
+            }
         }
     }
 }
