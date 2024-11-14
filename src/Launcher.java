@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Launcher {
@@ -6,27 +8,25 @@ public class Launcher {
         System.out.println("Hello World");
         String actual_path = System.getProperty("user.dir");
         System.out.println("Current directory: " + actual_path);
-
         var scanner = new Scanner(System.in);
+        List<Command> commands = new ArrayList<>();
+        commands.add(new Quit());
+        commands.add(new Fibo());
+        commands.add(new Freq());
 
         for (;;) {
             String entry = scanner.nextLine();
-            if (entry.equals("quit")) {
-                scanner.close();
-                break;
-            } else if (entry.equals("fibo")) {
-                System.out.println("Enter a number");
-                int n = scanner.nextInt();
-                Fibonacci fib = new Fibonacci(n);
-                System.out.println(fib.execute_fibonacci(n));
-                break;
-            } else if (entry.equals("freq")) {
-                System.out.print("Please enter the file path: ");
-                String filePath = scanner.nextLine();
-                Freq freq = new Freq(filePath);
-                freq.execute_freq();
-                break;
-            } else {
+            boolean commandfound = false;
+            for (Command command : commands) {
+                if (command.name().equals(entry)) {
+                    if (command.run(scanner)) {
+                        return;
+                    }
+                    commandfound = true;
+                    break;
+                }
+            }
+            if (!commandfound) {
                 System.out.println("Unknown command");
             }
         }
